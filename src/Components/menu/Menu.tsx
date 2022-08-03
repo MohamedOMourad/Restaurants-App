@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { Container } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { ProductState } from '../../Types';
 import Filter from './Filter';
 import MenuItems from './MenuItems';
 
 const Menu = () => {
+
+
   const [menu, SetMenu] = useState([{
     id: 1,
     title: "PIZZA",
