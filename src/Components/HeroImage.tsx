@@ -10,7 +10,7 @@ function HeroImage() {
         <span style={{ color: '#ff9200' }}>FOOD</span>
       </h1>
       <div>
-        <Image style={{ width: "15em", height: "15em" }} src={require('../Imgs/Pizza.png')}/>
+        <Image className='fluid' style={{ width: "15em", height: "15em" }} src={require('../Imgs/Pizza.png')}/>
       </div>
       </div>
       </Container>

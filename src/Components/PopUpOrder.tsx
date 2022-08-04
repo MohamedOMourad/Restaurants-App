@@ -1,43 +1,23 @@
 import { useEffect, useState } from 'react';
 import { Button, Image, Modal } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import { AppTypes } from "../Types";
+import { AppTypes, OrderCartState } from "../Types";
 import { TiPlus, TiMinus } from "react-icons/ti";
+import { useDispatch, useSelector } from 'react-redux';
+import { addOrder } from '../utils/Function';
 
 
 
 const PopUpOrder = ({ show, onHide }: AppTypes) => {
     const [supTotal, setSupTotal] = useState(0);
-    const [items, setItems] = useState([
-        {
-            id: 7,
-            name: "Seafood",
-            description: "Shrimpo squid paper",
-            price: 200,
-            type: "PIZZA",
-        },
-        {
-            id: 8,
-            name: "Seafood",
-            description: "Shrimpo squid paper",
-            price: 200,
-            type: "PIZZA",
-        },
-        {
-            id: 9,
-            name: "Seafood",
-            description: "Shrimpo squid paper",
-            price: 200,
-            type: "PIZZA",
-        },
-        
-    ]);
+    const dispatch = useDispatch()
+    const ordersCart = useSelector((state: OrderCartState) => state.OrderCart);
 
     useEffect(() => {
         let total = 0;
-        items.map((item) => (total += item.price));
+        ordersCart?.map((item) => (total += (item.quantity! * item?.price)));
         setSupTotal(total);
-    }, [items]);
+    }, [ordersCart]);
 
     return (
         <Modal
@@ -50,22 +30,21 @@ const PopUpOrder = ({ show, onHide }: AppTypes) => {
             size="sm"
         >
             <Modal.Body>
-                {items.map((item) => (
-                    <div className='mb-4'>
+                {ordersCart?.map((item) => (
+                    <div key={item?.id} className='mb-4'>
                         <div className="d-flex justify-content-center align-items-center gap-2">
                             <Image src={require('../Imgs/Pizza.png')} style={{ width: "60px" }} />
                             <div className='m0'>
                                 <p>{item?.name}</p>
-                                <p>{item?.description}</p>
                                 <p>Price:LE{item?.price}</p>
-                                <TiMinus />
-                                <span className='fw-bold m-2'>1</span>
-                                <TiPlus />
+                                <TiMinus onClick={() => addOrder('-', item, dispatch)} />
+                                <span className='fw-bold m-2'>{item?.quantity}</span>
+                                <TiPlus onClick={() => addOrder('+', item, dispatch)} />
                             </div>
                         </div>
                     </div>
                 ))}
-                <hr/>
+                <hr />
                 <div className="d-flex justify-content-center">
                     <p>SupTotal: LE {supTotal}</p>
                 </div>
@@ -84,4 +63,4 @@ const PopUpOrder = ({ show, onHide }: AppTypes) => {
         </Modal>
     );
 }
-export default PopUpOrder
+export default PopUpOrder;

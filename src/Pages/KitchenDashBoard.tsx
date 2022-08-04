@@ -4,8 +4,8 @@ import { Col, Row, Stack } from 'react-bootstrap'
 const KitchenDashBoard = () => {
     return (
         <>
-            <Row style={{ minHeight: "calc(100vh - 90px)" }}>
-                <Col sm={8}>
+            <Row className='pt-5' style={{ minHeight: "calc(100vh - 90px)" }}>
+                <Col sm={12}>
                     <div className="container-fluid">
                         <div className="row flex-nowrap">
                             <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
@@ -45,6 +45,7 @@ const KitchenDashBoard = () => {
                                     </ul>
                                 </div>
                             </div>
+                    <div>sdsds</div>
                         </div>
                     </div>
                 </Col>

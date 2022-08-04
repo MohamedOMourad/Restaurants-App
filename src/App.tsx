@@ -15,9 +15,14 @@ function App() {
   const dispatch = useDispatch();
 
   const getProductsData = async () => {
-    dispatch(getAllProducts(await getProducts()))
-
+    const res = await getProducts();
+    if (res?.status === 200) {
+      dispatch(getAllProducts(res.data.data));
+    } else {
+      console.log("Error On Getting Products");
+    }
   }
+
   useEffect(() => {
     getProductsData()
   }, [])

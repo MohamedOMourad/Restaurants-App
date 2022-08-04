@@ -1,6 +1,6 @@
-import { orderAction } from "../../Types"
+import { OrderAction } from "../../Types"
 
-const orderReducer = (state = [], action: orderAction) => {
+const orderReducer = (state = [], action: OrderAction) => {
     switch (action.type) {
         case "GETALLORDERS":
             return action.payload;

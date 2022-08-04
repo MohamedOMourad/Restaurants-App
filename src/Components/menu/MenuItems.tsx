@@ -1,11 +1,14 @@
-import { AppTypes, ProductState } from "../../Types";
+import { ProductState, OrderCartState } from "../../Types";
 import { Button, Card, Image } from "react-bootstrap";
 import { TiPlus, TiMinus } from "react-icons/ti";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addOrder, getQuantity } from "../../utils/Function";
 
-
-const MenuItems = ({ menu }: AppTypes) => {
+const MenuItems = () => {
     const products = useSelector((state: ProductState) => state.Product);
+    const dispatch = useDispatch();
+    const ordersCart = useSelector((state: OrderCartState) => state.OrderCart);
+    console.log(ordersCart)
 
     return (
         <div className="col-col pb-5 ">
@@ -22,12 +25,12 @@ const MenuItems = ({ menu }: AppTypes) => {
                                     {product?.description}
                                 </div>
                                 <h4 style={{ color: '#ff9200' }}>Price: L.E {product?.price}</h4>
-                                <div >
-                                    <Button size="sm" type="button" className="btn btn-light" data-mdb-ripple-color="dark">
+                                <div>
+                                    <Button size="sm" type="button" className="btn btn-light" data-mdb-ripple-color="dark" onClick={() => addOrder('-', product, dispatch)}>
                                         <TiMinus />
                                     </Button>
-                                        <span className="m-1">10</span>
-                                    <Button size="sm" type="button" className="btn btn-light" data-mdb-ripple-color="dark">
+                                    <span className="m-1">{getQuantity(product.id, ordersCart)}</span>
+                                    <Button size="sm" type="button" className="btn btn-light" data-mdb-ripple-color="dark" onClick={() => addOrder('+', product, dispatch)}>
                                         <TiPlus />
                                     </Button>
                                 </div>
