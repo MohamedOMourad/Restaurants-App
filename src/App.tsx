@@ -14,17 +14,17 @@ import { Product } from './Types';
 function App() {
   const dispatch = useDispatch();
 
-  const getProductsData = async () => {
-    const res = await getProducts();
-    if (res?.status === 200) {
-      dispatch(getAllProducts(res.data.data));
-    } else {
-      console.log("Error On Getting Products");
-    }
-  }
+  // const getProductsData = async () => {
+  //   const res = await getProducts();
+  //   if (res?.status === 200) {
+  //     dispatch(getAllProducts(res.data.data));
+  //   } else {
+  //     console.log("Error On Getting Products");
+  //   }
+  // }
 
   useEffect(() => {
-    getProductsData()
+    getProducts(dispatch)
   }, [])
   return (
     <div style={{ height: '100vh' }}>

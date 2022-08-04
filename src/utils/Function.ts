@@ -1,12 +1,9 @@
-import { useDispatch } from "react-redux";
 import { addToOrderCart, minusFromOrderCart } from "../redux/actions/OrderCart";
 import { Product } from "../Types";
 
 export const addQuntity = (val: number) => {
     return val + 1;
 }
-
-
 
 export const addOrder = (addMin: string, product: Product, dispatch: any) => {
     switch (addMin) {
