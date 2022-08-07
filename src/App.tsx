@@ -9,7 +9,8 @@ import KitchenDashBoard from './Pages/KitchenDashBoard';
 import OrderSuccess from './Pages/OrderSuccess';
 import { getAllProducts } from './redux/actions/Product';
 import { getProducts } from './utils/API';
-import { Product } from './Types';
+import Footer from './Components/Footer';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
         <Route path='/ordersuccess' element={<OrderSuccess />} />
         <Route path='/KitchenDashBoard' element={<KitchenDashBoard />} />
       </Routes>
-
+      <Footer />
     </div>
   );
 }

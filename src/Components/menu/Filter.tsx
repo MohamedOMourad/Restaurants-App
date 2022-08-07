@@ -9,7 +9,7 @@ const Filter = ({ selecItem }: AppTypes) => {
         setType(val)
     }
     return (
-        <Pagination className='gap-2 d-flex justify-content-center align-items-center'>
+        <Pagination className='gap-2 d-flex flex-wrap justify-content-center align-items-center'>
             <Pagination.Item onClick={() => selectCategori("popular")} active={type ==='popular'}>
                 <Image
                     style={{ maxWidth: "4em", minHeight: "4em" }}

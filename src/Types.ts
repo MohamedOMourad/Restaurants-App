@@ -28,6 +28,7 @@ export interface Product {
     popular: boolean,
     category: Category,
     quantity?: number
+    imgUrl: string
 }
 
 export interface ProductAction {

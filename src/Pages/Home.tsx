@@ -1,4 +1,3 @@
-import Footer from '../Components/Footer';
 import HeroImage from '../Components/HeroImage';
 import Menu from '../Components/menu/Menu';
 
@@ -7,7 +6,6 @@ function Home() {
         <div>
             <HeroImage />
             <Menu/>
-            <Footer/>
         </div>
     )
 }

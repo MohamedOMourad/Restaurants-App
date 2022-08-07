@@ -32,6 +32,15 @@ export const getOrders = async (dispatch: Dispatch) => {
     }
 }
 
+export const updateOrderStus = async (dispatch: Dispatch, id: number) => {
+    try {
+        const res = await API.patch(`/order/${id}`);
+        getOrders(dispatch);
+    } catch (e) {
+        console.log(`Error On Getting Orders  ${e}`);
+    }
+}
+
 export const checkOutOrder = async (values: Order, ordersCart: Product[]) => {
     try {
         const res = await API.post('/order', { ...values, ordersCart });

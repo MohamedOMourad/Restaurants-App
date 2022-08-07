@@ -1,5 +1,5 @@
 import { ProductState, OrderCartState } from "../../Types";
-import { Button, Card, Image } from "react-bootstrap";
+import { Button, Card, Col, Image, Row } from "react-bootstrap";
 import { TiPlus, TiMinus } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder, getQuantity } from "../../utils/Function";
@@ -11,12 +11,15 @@ const MenuItems = () => {
 
     return (
         <div className="col-col pb-5 ">
+
+            <Row>
             {products?.map((product) => {
                 return (
+                    <Col lg={4} md={6} sm={12}>
                     <Card className="mb-1  p-3 " key={product?.id} >
                         <div className="gap-4 d-flex justify-content-evenly">
                             <div >
-                                <Image width={130} src={require('../../Imgs/seafood pizza.png')} />
+                                <Image width="130px" src={product.imgUrl} />
                             </div>
                             <div className="w-75">
                                 <h4>{product?.name}</h4>
@@ -36,8 +39,10 @@ const MenuItems = () => {
                             </div>
                         </div>
                     </Card>
+                        </Col>
                 );
             })}
+            </Row>
         </div >
     )
 }

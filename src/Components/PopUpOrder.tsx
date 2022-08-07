@@ -25,8 +25,8 @@ const PopUpOrder = ({ show, onHide }: AppTypes) => {
                 onHide && onHide();
             }}
             aria-labelledby="example-modal-sizes-title-sm"
-            style={{ marginLeft: "40%", marginTop: "2%" }}
             size="sm"
+            className='pop'
         >
             <Modal.Body>
                 {ordersCart?.map((item) => (

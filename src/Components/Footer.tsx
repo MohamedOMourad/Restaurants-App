@@ -2,15 +2,18 @@ import { Container, Navbar, Image } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <Navbar style={{ backgroundColor: '#303030', color: '#ffff', minHeight: '5vh' }} >
-                <div className="d-flex py-1">
-                    <div className="fw-bolder d-flex justify-content-center align-items-center">
+        <Navbar style={{ minHeight: '1vh' }} className='nav-Bar' expand="sm">
+            <Container className='container-fluid'>
+                <div className="w-100 d-flex justify-content-between py-1">
+                    <div className="fw-bolder text-light d-flex justify-content-center align-items-center">
                         OBSD <Image src={require('../Imgs/logo.png')} style={{ width: "1em", height: "1em" }}></Image>
                     </div>
-                    <div className="text-center w-75 mx-auto ">&copy; copyright</div>
+                    <div className="text-center text-light w-75 mx-auto ">&copy; {new Date().getFullYear()} OBSD - All Rights Reserved</div>
                 </div>
-        </Navbar>
+            </Container>
+        </Navbar >
     )
 }
 
 export default Footer;
+
