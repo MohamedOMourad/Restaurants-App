@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AppTypes, OrderCartState } from "../Types";
 import { TiPlus, TiMinus } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrder } from '../utils/Function';
+import { addOrder, calcOrderTotal } from '../utils/Function';
 
 
 
@@ -14,9 +14,8 @@ const PopUpOrder = ({ show, onHide }: AppTypes) => {
     const ordersCart = useSelector((state: OrderCartState) => state.OrderCart);
 
     useEffect(() => {
-        let total = 0;
-        ordersCart?.map((item) => (total += (item.quantity! * item?.price)));
-        setSupTotal(total);
+        setSupTotal(calcOrderTotal(ordersCart)
+        );
     }, [ordersCart]);
 
     return (

@@ -1,19 +1,8 @@
 export interface AppTypes {
-    item?: itemTypes,
-    menu?: itemTypes[],
     selecItem?: Function,
     hideModel?: Function,
     onHide?: Function,
     show?: boolean
-}
-
-export interface itemTypes {
-    id: number,
-    title: string,
-    description: string,
-    price: number,
-    type: string,
-    popular: boolean
 }
 
 export interface Category {
@@ -49,14 +38,14 @@ export interface ProductState {
     Product: Product[]
 }
 export interface Order {
-    id: number;
-    dateCreated: Date,
-    dateUpdated: Date,
-    firstName?: string,
-    lastName?: string,
-    mobNum?: string,
-    city?: string,
-    address?: string,
+    id?: number;
+    dateCreated?: Date,
+    dateUpdated?: Date,
+    firstName: string,
+    lastName: string,
+    mobNum: string,
+    city: string,
+    address: string,
     orderNum?: string,
     completed?: boolean,
     orderLine?: OrderLine[]
@@ -65,6 +54,13 @@ export interface Order {
 export interface OrderAction {
     type: string,
     payload: Order
+}
+export interface OrderState {
+    Order: Order[];
+}
+
+export interface OrderProp {
+    order: Order;
 }
 
 export interface OrderCartAction {
@@ -88,4 +84,8 @@ export interface OrderLine {
 export interface OrderLineAction {
     type: string,
     payload: OrderLine
+}
+
+export interface CheckOutOrder {
+
 }

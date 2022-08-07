@@ -1,57 +1,38 @@
-import React from 'react'
-import { Col, Row, Stack } from 'react-bootstrap'
+import { useEffect } from 'react'
+import { Card, Col, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import OrderDashCard from '../Components/OrderDashCard';
+import { Order, OrderState } from '../Types';
+import { getOrders } from '../utils/API';
 
 const KitchenDashBoard = () => {
+    const Orders = useSelector((state: OrderState) => state.Order);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        getOrders(dispatch)
+    }, [])
     return (
-        <>
-            <Row className='pt-5' style={{ minHeight: "calc(100vh - 90px)" }}>
-                <Col sm={12}>
-                    <div className="container-fluid">
-                        <div className="row flex-nowrap">
-                            <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-                                <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                                    <a
-                                        href="/"
-                                        className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-                                    >
-                                        <span className="fs-5 d-none d-sm-inline fw-bolded">
-                                            Dashboard
-                                        </span>
-                                    </a>
-                                    <ul
-                                        className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                                        id="menu"
-                                    >
-                                        <li className="nav-item">
-                                            <a href="#" className="nav-link align-middle px-0">
-                                                <i className="fs-4 bi-house"></i>{" "}
-                                                <span className="ms-1 d-none d-sm-inline fw-bold">
-                                                    Pending Orders
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#submenu1"
-                                                data-bs-toggle="collapse"
-                                                className="nav-link px-0 align-middle"
-                                            >
-                                                <i className="fs-4 bi-speedometer2"></i>{" "}
-                                                <span className="ms-1 d-none d-sm-inline fw-bold">
-                                                    Completed Orders
-                                                </span>{" "}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                    <div>sdsds</div>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
-        </>
+        <Row className='mt-5 ms-0 min-vh-100'>
+            <Col xs={2} style={{ background: "#303030" }} className="mx-0 pt-5 d-flex flex-wrap justify-content-start">
+                <div style={{ color: "white" }} className="w-75" >
+                    <p className='fs-3 fw-bolder'>DASHBOARD</p>
+                
+                    <p >
+                        Pending Orders
+                    </p>
+                    <p >
+                        Completed Orders
+                    </p>
+                </div>
+            </Col>
+            <Col className="d-flex flex-wrap gap-3 my-5 mx-0">
+                {Orders.map((order: Order) => {
+                    return <OrderDashCard order={order} />
+                }
+                )}
+            </Col>
+        </Row>
     )
 }
 
-export default KitchenDashBoard
+export default KitchenDashBoard;

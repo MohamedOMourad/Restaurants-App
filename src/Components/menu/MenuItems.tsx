@@ -8,7 +8,6 @@ const MenuItems = () => {
     const products = useSelector((state: ProductState) => state.Product);
     const dispatch = useDispatch();
     const ordersCart = useSelector((state: OrderCartState) => state.OrderCart);
-    console.log(ordersCart)
 
     return (
         <div className="col-col pb-5 ">
