@@ -4,7 +4,7 @@ import { getAllProducts } from "../redux/actions/Product";
 import { getAllOrders } from "../redux/actions/order";
 import { Order, Product } from "../Types";
 
-const API = axios.create({ baseURL: 'http://localhost:5000/' });
+const API = axios.create({ baseURL: 'https://restaurant-app-tawwr.herokuapp.com' });
 
 export const getProducts = async (dispatch: Dispatch) => {
     try {
